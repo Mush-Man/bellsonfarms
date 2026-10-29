@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bellson Farms, Lusaka: smoked and fresh Nkhuku (chicken), farm eggs and fresh herb bundles. Raised and grown the smart way.">
+<meta name="theme-color" content="#2d4a2d">
+<link rel="icon" href= "BF Logo 2.png" sizes="32x32">
+<script>document.documentElement.classList.add('js');</script>
+<title>Bellson Farms — Proudly Zambian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Lucide Icons: pinned release + integrity hash. The site still works if this fails to load. -->
+<script src="https://unpkg.com/lucide@1.56.0/dist/umd/lucide.min.js" integrity="sha384-kxA7XQbo2ctlLRLh12oGZC6Eao0ELKI4y0lTRMBSLC37U2AuNf0F7s8r0bChYAAF" crossorigin="anonymous"></script>
+<style>
+:root {
+  --green-dark: #2d4a2d;
+  --green-mid:  #3d6b3d;
+  --green-light:#5a8a5a;
+  --green-pale: #e8f0e0;
+  --cream:      #f7f3ec;
+  --cream-dark: #ede8df;
+  --brown:      #8b6914;
+  --gold:       #c4a44a;
+  --text-dark:  #1a2a1a;
+  --text-mid:   #4a5a40;
+  --text-light: #7a8a70;
+  --white:      #ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text-dark);
+  overflow-x:hidden;
+}
+
+/* ── IMAGE PLACEHOLDER ── */
+.img-placeholder{
+  background:linear-gradient(135deg,#d4dfc4 0%,#b8ccaa 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:var(--green-mid);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.5px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.img-placeholder::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20Z' stroke='%233d6b3d' stroke-width='.4' fill='none' opacity='.15'/%3E%3C/svg%3E");
+}
+.img-placeholder i{position:relative;color:var(--green-mid);opacity:.6;}
+.img-placeholder span{position:relative;opacity:.7;padding:0 1rem;}
+
+/* ── PATTERN BG ── */
+.pattern-bg{
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%234a6b4a' stroke-width='.5' fill='none' opacity='.12'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%234a6b4a' opacity='.07'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(45,74,45,0.97);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+  height:68px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;flex-shrink:0;
+}
+.nav-logo-icon{
+  width:38px;height:38px;
+  background:var(--gold);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-icon svg{width:20px;height:20px;color:var(--green-dark);}
+.nav-logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:700;
+  color:var(--white);line-height:1.1;
+}
+.nav-logo-sub{
+  font-size:9px;color:rgba(255,255,255,.5);
+  letter-spacing:2px;text-transform:uppercase;
+  font-weight:300;
+}
+.nav-links{
+  display:flex;gap:2.5rem;list-style:none;
+  align-items:center;
+}
+.nav-links a{
+  color:rgba(255,255,255,.8);
+  text-decoration:none;font-size:14px;
+  font-weight:400;letter-spacing:.5px;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-cart-btn{
+  background:rgba(196,164,74,.2);
+  border:1px solid rgba(196,164,74,.35);
+  color:var(--gold);
+  border-radius:8px;padding:8px 14px;
+  font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;gap:7px;
+  transition:all .2s;
+}
+.nav-cart-btn:hover{background:rgba(196,164,74,.35);}
+.nav-cart-btn svg{width:17px;height:17px;}
+.cart-count-badge{
+  background:var(--gold);color:var(--green-dark);
+  font-size:10px;font-weight:700;
+  padding:1px 6px;border-radius:100px;
+  display:none;
+}
+
+/* Hamburger */
+.hamburger{
+  display:none;
+  background:none;border:none;
+  color:var(--white);cursor:pointer;
+  padding:6px;
+}
+.hamburger svg{width:24px;height:24px;}
+
+/* Mobile menu */
+.mobile-nav{
+  display:none;
+  position:fixed;top:68px;left:0;width:100%;
+  background:rgba(30,55,30,0.98);
+  z-index:199;
+  flex-direction:column;
+  padding:1.5rem 2rem;
+  gap:1.2rem;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  color:rgba(255,255,255,.85);
+  text-decoration:none;font-size:16px;
+  font-weight:400;padding:.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s;
+}
+.mobile-nav a:hover{color:var(--gold);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  /* ↓ REPLACE "YOUR_HERO_IMAGE.jpg" with your background photo filename */
+  background-image: url("pexels-timmossholder-974314.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding-top:68px;
+}
+/* Green overlay sits on top of the photo */
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 50, 25, 0.88) 0%,
+    rgba(35, 65, 35, 0.82) 50%,
+    rgba(20, 40, 20, 0.75) 100%
+  );
+  z-index:0;
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' stroke='%235a8a5a' stroke-width='.6' fill='none' opacity='.15'/%3E%3C/svg%3E");
+  opacity:.5;
+  z-index:0;
+}
+/* Ensure hero children sit above the overlay */
+.hero > *:not(.hero::before){position:relative;z-index:1;}
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:1200px;margin:0 auto;
+  padding:5rem 4rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+  width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(196,164,74,.2);
+  border:1px solid rgba(196,164,74,.4);
+  color:var(--gold);
+  padding:6px 16px;border-radius:100px;
+  font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;font-weight:600;
+  margin-bottom:1.5rem;
+}
+.hero-badge svg{width:13px;height:13px;}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:800;color:var(--white);
+  line-height:1.1;margin-bottom:1.5rem;
+}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-desc{
+  font-size:16px;color:rgba(255,255,255,.7);
+  line-height:1.8;margin-bottom:2.5rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--green-dark);
+  padding:13px 28px;border:none;border-radius:8px;
+  font-size:14px;font-weight:700;cursor:pointer;
+  text-decoration:none;display:inline-flex;
+  align-items:center;gap:8px;
+  transition:all .25s;font-family:'DM Sans',sans-serif;
+}
+.btn-primary svg{width:16px;height:16px;}
+.btn-primary:hover{background:var(--white);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:var(--white);
+  padding:13px 28px;
+  border:1.5px solid rgba(255,255,255,.35);
+  border-radius:8px;font-size:14px;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .25s;font-family:'DM Sans',sans-serif;
+}
+.btn-outline svg{width:16px;height:16px;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.1);
+  border-radius:12px;overflow:hidden;margin-top:3rem;
+}
+.hero-stat{
+  background:rgba(255,255,255,.05);
+  padding:1.2rem;text-align:center;
+}
+.hero-stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:700;
+  color:var(--gold);display:block;
+}
+.hero-stat-label{
+  font-size:10px;color:rgba(255,255,255,.5);
+  letter-spacing:1px;text-transform:uppercase;
+}
+
+/* Hero right — showcase cards */
+.hero-showcase{display:flex;flex-direction:column;gap:.9rem;}
+.showcase-card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:1rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;
+  cursor:pointer;transition:all .25s;
+  text-decoration:none;
+}
+.showcase-card:hover{
+  background:rgba(255,255,255,.13);
+  transform:translateX(6px);
+  border-color:rgba(196,164,74,.3);
+}
+.showcase-img{
+  width:60px;height:60px;
+  border-radius:10px;
+  background:rgba(196,164,74,.15);
+  overflow:hidden;flex-shrink:0;
+}
+.showcase-img img{
+  width:100%;height:100%;object-fit:cover;
+}
+.showcase-info{flex:1;min-width:0;}
+.showcase-name{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--white);
+  font-weight:600;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.showcase-sub{font-size:11px;color:rgba(255,255,255,.45);}
+.showcase-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--gold);
+  white-space:nowrap;
+}
+.showcase-tag{
+  font-size:9px;
+  background:rgba(90,138,90,.3);color:#9dd99d;
+  padding:2px 7px;border-radius:100px;
+  display:block;text-align:center;margin-top:3px;letter-spacing:.5px;
+}
+
+/* ── TICKER STRIP ── */
+.zambian-strip{
+  background:var(--gold);
+  padding:14px 2rem;
+  display:flex;align-items:center;
+  justify-content:center;gap:2rem;
+  overflow:hidden;flex-wrap:wrap;
+}
+.zambian-strip span{
+  font-size:11px;letter-spacing:2.5px;
+  text-transform:uppercase;font-weight:700;
+  color:var(--green-dark);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.zambian-strip span svg{width:14px;height:14px;}
+.strip-dot{width:5px;height:5px;background:var(--green-dark);border-radius:50%;opacity:.4;flex-shrink:0;}
+
+/* ── NEXT BATCH COUNTDOWN ── */
+.countdown-section{
+  background:var(--green-dark);
+  padding:4.5rem 4rem;
+  position:relative;overflow:hidden;
+}
+.countdown-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2.5rem;flex-wrap:wrap;position:relative;z-index:1;
+}
+.countdown-copy{max-width:400px;}
+.countdown-copy .section-label{color:var(--gold);}
+.countdown-copy .section-label svg{color:var(--gold);}
+.countdown-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.5rem,2.6vw,2.1rem);
+  font-weight:700;color:var(--white);
+  line-height:1.25;margin-bottom:.7rem;
+}
+.countdown-title em{color:var(--gold);font-style:italic;}
+.countdown-sub{
+  font-size:14px;color:rgba(255,255,255,.6);
+  line-height:1.6;margin-bottom:1.3rem;
+}
+.countdown-notify{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--green-dark);
+  border:none;border-radius:100px;
+  padding:11px 20px;font-size:13px;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all .2s;text-decoration:none;
+}
+.countdown-notify svg{width:15px;height:15px;}
+.countdown-notify:hover{background:var(--white);transform:scale(1.04);}
+.countdown-timer{
+  display:flex;gap:.9rem;flex-shrink:0;
+}
+.countdown-unit{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  width:84px;padding:1.1rem 0;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.countdown-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:var(--gold);
+  line-height:1;font-variant-numeric:tabular-nums;
+}
+.countdown-label{
+  font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);font-weight:600;
+}
+.countdown-colon{
+  display:flex;align-items:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;color:rgba(255,255,255,.25);
+  padding-bottom:1.2rem;
+}
+.countdown-ready{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:700;color:var(--gold);
+}
+.countdown-ready-sub{
+  font-size:12.5px;color:rgba(255,255,255,.55);margin-top:3px;
+}
+
+/* ── SECTION COMMONS ── */
+.section-label{
+  font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--green-mid);
+  font-weight:700;margin-bottom:.8rem;
+  display:flex;align-items:center;gap:8px;
+}
+.section-label svg{width:14px;height:14px;}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.7rem);
+  font-weight:700;color:var(--text-dark);
+  line-height:1.2;margin-bottom:1.2rem;
+}
+.section-title em{font-style:italic;color:var(--green-mid);}
+.section-body{
+  font-size:16px;color:var(--text-mid);
+  line-height:1.85;margin-bottom:1.5rem;
+}
+
+/* ── ABOUT ── */
+.about{
+  padding:7rem 4rem;
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.about-pillars{display:flex;flex-direction:column;gap:.9rem;margin-top:2rem;}
+.pillar{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.2rem;
+  background:var(--green-pale);
+  border-radius:10px;
+  border-left:3px solid var(--green-mid);
+}
+.pillar-icon{
+  width:36px;height:36px;
+  background:var(--green-mid);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.pillar-icon svg{width:18px;height:18px;color:var(--white);}
+.pillar-title{font-weight:700;font-size:14px;color:var(--text-dark);margin-bottom:3px;}
+.pillar-body{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+/* About right — image grid */
+.about-visual{
+  display:grid;grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;gap:1rem;
+}
+.about-block{
+  border-radius:16px;overflow:hidden;
+  position:relative;
+}
+.about-block.tall{grid-row:span 2;}
+.about-block .img-placeholder{
+  width:100%;
+  height:100%;min-height:160px;
+  border-radius:16px;
+}
+.about-block.tall .img-placeholder{min-height:360px;}
+.about-block-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 100%);
+  padding:1rem;border-radius:0 0 16px 16px;
+}
+.about-block-label{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--white);
+}
+.about-block-sub{
+  font-size:10px;color:rgba(255,255,255,.6);
+  letter-spacing:1px;text-transform:uppercase;
+}
+
+/* ── PRODUCTS ── */
+.products-section{background:var(--green-dark);padding:7rem 4rem;}
+.products-inner{max-width:1200px;margin:0 auto;}
+.products-header{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;margin-bottom:2.5rem;
+  gap:1rem;flex-wrap:wrap;
+}
+.products-header .section-label{color:var(--gold);}
+.products-header .section-label svg{color:var(--gold);}
+.products-header .section-title{color:var(--white);margin-bottom:0;}
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.4rem;
+}
+.product-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;overflow:hidden;
+  transition:all .3s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.product-card:hover{
+  background:rgba(255,255,255,.11);
+  transform:translateY(-6px);
+  border-color:rgba(196,164,74,.35);
+}
+.product-img{
+  height:180px;position:relative;
+  overflow:hidden;
+}
+.product-img img,.product-img .img-placeholder{
+  width:100%;height:100%;object-fit:cover;
+}
+.product-badge{
+  position:absolute;top:12px;right:12px;
+  background:var(--gold);color:var(--green-dark);
+  font-size:9px;font-weight:800;
+  padding:3px 10px;border-radius:100px;
+  letter-spacing:.8px;text-transform:uppercase;
+  z-index:1;
+}
+.product-body{padding:1.3rem;flex:1;display:flex;flex-direction:column;}
+.product-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--white);margin-bottom:3px;
+}
+.product-sub{
+  font-size:11px;color:rgba(255,255,255,.4);
+  margin-bottom:1rem;letter-spacing:.8px;text-transform:uppercase;
+}
+.product-macros{display:flex;gap:8px;margin-bottom:1.2rem;}
+.macro{
+  background:rgba(255,255,255,.07);
+  border-radius:6px;padding:5px 9px;text-align:center;
+}
+.macro-val{
+  font-size:12px;font-weight:700;
+  color:var(--gold);display:block;
+}
+.macro-label{
+  font-size:9px;color:rgba(255,255,255,.35);
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.product-footer{
+  display:flex;align-items:center;
+  justify-content:space-between;margin-top:auto;
+}
+.product-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;color:var(--gold);
+}
+.product-price-sub{
+  font-size:10px;color:rgba(255,255,255,.35);display:block;
+}
+.add-btn{
+  background:var(--gold);color:var(--green-dark);
+  border:none;border-radius:8px;
+  padding:10px 16px;font-size:13px;font-weight:700;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;gap:5px;
+  transition:all .2s;
+}
+.add-btn svg{width:15px;height:15px;}
+.add-btn:hover{background:var(--white);transform:scale(1.05);}
+
+/* ── FARM SHOP / ACCESSORIES ── */
+.acc-section{
+  padding:7rem 4rem;
+  background:var(--cream);
+  border-top:1px solid var(--cream-dark);
+}
+.acc-inner{max-width:1200px;margin:0 auto;}
+.acc-head{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;gap:1.5rem;flex-wrap:wrap;
+  margin-bottom:2.8rem;
+}
+.acc-head .section-title{margin-bottom:.6rem;}
+.acc-head-copy{max-width:560px;}
+.acc-head-note{
+  display:flex;align-items:center;gap:10px;
+  background:var(--white);border:1px solid var(--cream-dark);
+  border-radius:100px;padding:10px 18px;
+  font-size:12.5px;color:var(--text-mid);
+  box-shadow:0 4px 18px rgba(45,74,45,.05);
+}
+.acc-head-note svg{width:16px;height:16px;color:var(--green-mid);flex-shrink:0;}
+.acc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.6rem;
+}
+.acc-card{
+  background:var(--white);
+  border:1px solid var(--cream-dark);
+  border-radius:22px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:box-shadow .25s, transform .25s, border-color .25s;
+}
+.acc-card:hover{
+  box-shadow:0 16px 44px rgba(45,74,45,.13);
+  transform:translateY(-5px);
+  border-color:rgba(196,164,74,.5);
+}
+.acc-img{height:210px;position:relative;overflow:hidden;background:var(--green-pale);}
+.acc-img img,.acc-img .img-placeholder{width:100%;height:100%;object-fit:cover;}
+.acc-tag{
+  position:absolute;top:12px;left:12px;z-index:1;
+  background:var(--green-dark);color:var(--gold);
+  font-size:9px;font-weight:800;letter-spacing:.8px;
+  text-transform:uppercase;padding:4px 11px;border-radius:100px;
+}
+.acc-body{padding:1.5rem;display:flex;flex-direction:column;flex:1;}
+.acc-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:700;
+  color:var(--text-dark);margin-bottom:3px;
+}
+.acc-sub{
+  font-size:10.5px;color:var(--text-light);
+  letter-spacing:1.2px;text-transform:uppercase;
+  margin-bottom:.9rem;
+}
+.acc-desc{
+  font-size:13.5px;color:var(--text-mid);
+  line-height:1.65;margin-bottom:1.1rem;
+}
+.acc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.4rem;}
+.acc-chip{
+  background:var(--green-pale);color:var(--green-mid);
+  font-size:10.5px;font-weight:600;letter-spacing:.4px;
+  padding:5px 10px;border-radius:100px;
+  display:flex;align-items:center;gap:5px;
+}
+.acc-chip svg{width:12px;height:12px;}
+.acc-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;margin-top:auto;
+  border-top:1px solid var(--cream-dark);padding-top:1.1rem;
+}
+.acc-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;font-weight:700;color:var(--green-dark);
+}
+.acc-price-sub{font-size:10px;color:var(--text-light);display:block;letter-spacing:.5px;}
+.acc-btn{
+  background:var(--green-mid);color:var(--white);
+  border:none;border-radius:10px;
+  padding:11px 18px;font-size:13px;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  transition:all .2s;flex-shrink:0;
+}
+.acc-btn svg{width:15px;height:15px;}
+.acc-btn:hover{background:var(--green-dark);transform:scale(1.04);}
+.acc-bundle{
+  margin-top:1.6rem;
+  background:var(--green-dark);
+  border-radius:20px;padding:1.6rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;
+}
+.acc-bundle-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:700;color:var(--white);
+  display:flex;align-items:center;gap:10px;margin-bottom:4px;
+}
+.acc-bundle-title svg{width:18px;height:18px;color:var(--gold);}
+.acc-bundle-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5;}
+
+/* ── FACTS ── */
+.fact-section{padding:6rem 4rem;background:var(--cream-dark);}
+.fact-inner{max-width:1200px;margin:0 auto;text-align:center;}
+.fact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.5rem;margin-top:3rem;
+}
+.fact-card{
+  background:var(--white);border-radius:16px;
+  padding:2rem 1.5rem;text-align:center;
+  border-bottom:3px solid var(--green-mid);
+}
+.fact-card-icon{
+  width:48px;height:48px;
+  background:var(--green-pale);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;
+}
+.fact-card-icon svg{width:24px;height:24px;color:var(--green-mid);}
+.fact-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:800;
+  color:var(--green-dark);display:block;
+  line-height:1;margin-bottom:6px;
+}
+.fact-label{font-size:13px;color:var(--text-mid);}
+
+/* ── RECIPES ── */
+.recipe-section{
+  padding:7rem 4rem;
+  max-width:1200px;margin:0 auto;
+}
+.recipe-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.4rem;margin-top:2.5rem;
+}
+.recipe-card{
+  background:var(--white);border-radius:20px;
+  overflow:hidden;border:1px solid var(--cream-dark);
+  transition:box-shadow .25s, transform .25s;
+}
+.recipe-card:hover{
+  box-shadow:0 12px 40px rgba(45,74,45,.12);
+  transform:translateY(-4px);
+}
+.recipe-img{
+  height:140px;overflow:hidden;position:relative;
+}
+.recipe-img img,.recipe-img .img-placeholder{
+  width:100%;height:100%;object-fit:cover;
+}
+.recipe-body{padding:1.4rem;}
+.recipe-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--text-dark);margin-bottom:.8rem;
+  display:flex;align-items:center;gap:8px;
+}
+.recipe-name svg{width:16px;height:16px;color:var(--green-mid);flex-shrink:0;}
+.recipe-steps{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.recipe-step{display:flex;gap:9px;font-size:13px;color:var(--text-mid);line-height:1.5;}
+.step-num{
+  background:var(--green-mid);color:white;
+  font-size:10px;font-weight:700;
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+
+/* ── HERITAGE ── */
+.heritage-section{
+  background:var(--green-dark);padding:7rem 4rem;
+  position:relative;overflow:hidden;
+}
+.heritage-section::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' stroke='%235a8a5a' stroke-width='.5' fill='none' opacity='.1'/%3E%3C/svg%3E");
+}
+.heritage-inner{
+  max-width:1000px;margin:0 auto;
+  position:relative;text-align:center;
+}
+.heritage-inner .section-label{color:var(--gold);justify-content:center;}
+.heritage-inner .section-label svg{color:var(--gold);}
+.heritage-inner .section-title{color:var(--white);}
+.heritage-inner .section-body{
+  color:rgba(255,255,255,.65);
+  margin:0 auto 3rem;max-width:600px;
+}
+.heritage-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,2.5vw,1.75rem);
+  font-style:italic;color:var(--gold);
+  max-width:680px;margin:0 auto 3rem;
+  line-height:1.65;
+  border-left:3px solid rgba(196,164,74,.4);
+  padding-left:1.5rem;text-align:left;
+}
+.testimonials{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.4rem;margin-top:3rem;
+}
+.testi-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:1.6rem;text-align:left;
+}
+.testi-stars{
+  display:flex;gap:3px;margin-bottom:.9rem;
+}
+.testi-stars svg{width:15px;height:15px;color:var(--gold);fill:var(--gold);}
+.testi-text{
+  font-size:14px;color:rgba(255,255,255,.7);
+  line-height:1.75;font-style:italic;margin-bottom:1.1rem;
+}
+.testi-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);}
+.testi-loc{font-size:11px;color:rgba(255,255,255,.35);}
+
+/* ── CONTACT ── */
+.contact-section{padding:6rem 4rem;background:var(--cream-dark);}
+.contact-inner{max-width:780px;margin:0 auto;text-align:center;}
+.contact-form{
+  margin-top:2.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  text-align:left;
+}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1 / -1;}
+.form-group label{
+  font-size:11px;font-weight:700;
+  color:var(--text-mid);letter-spacing:1px;text-transform:uppercase;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  background:var(--white);
+  border:1.5px solid rgba(45,74,45,.15);
+  border-radius:8px;padding:12px 14px;
+  font-size:14px;font-family:'DM Sans',sans-serif;
+  color:var(--text-dark);transition:border-color .2s;
+  outline:none;resize:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{border-color:var(--green-mid);}
+.submit-btn{
+  width:100%;padding:15px;
+  background:var(--green-dark);color:var(--white);
+  border:none;border-radius:10px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s;
+}
+.submit-btn svg{width:18px;height:18px;}
+.submit-btn:hover{background:var(--green-mid);}
+
+/* ── FOOTER ── */
+footer{background:var(--text-dark);padding:4rem;}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+}
+.footer-brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.4rem;
+}
+.footer-brand-sub{
+  font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+}
+.footer-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,.4);}
+.footer-socials{display:flex;gap:10px;margin-top:1.4rem;}
+.social-link{
+  width:36px;height:36px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.5);text-decoration:none;
+  transition:all .2s;
+}
+.social-link:hover{background:rgba(196,164,74,.2);color:var(--gold);}
+.social-link svg{width:16px;height:16px;display:block;fill:currentColor;}
+.footer-heading{
+  font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--white);margin-bottom:1.1rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links a{
+  font-size:13px;color:rgba(255,255,255,.45);
+  text-decoration:none;transition:color .2s;
+  display:flex;align-items:center;gap:7px;
+}
+.footer-links a svg{width:13px;height:13px;flex-shrink:0;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{
+  max-width:1200px;margin:2.5rem auto 0;
+  padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:rgba(255,255,255,.25);
+  flex-wrap:wrap;gap:.5rem;
+}
+
+/* ── CART DRAWER ── */
+.cart-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:300;opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-drawer{
+  position:fixed;top:0;right:0;
+  width:380px;max-width:100vw;height:100vh;
+  background:var(--white);z-index:301;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+  display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0);}
+.cart-header-bar{
+  background:var(--green-dark);padding:1.3rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.cart-title-wrap{display:flex;align-items:center;gap:10px;}
+.cart-title-wrap svg{width:20px;height:20px;color:var(--gold);}
+.cart-title{
+  font-family:'Playfair Display',serif;
+  color:var(--white);font-size:1.1rem;font-weight:700;
+}
+.cart-close-btn{
+  background:transparent;border:none;
+  color:rgba(255,255,255,.7);cursor:pointer;
+  display:flex;align-items:center;padding:4px;
+  border-radius:6px;transition:background .2s;
+}
+.cart-close-btn:hover{background:rgba(255,255,255,.1);}
+.cart-close-btn svg{width:20px;height:20px;}
+.cart-items{flex:1;overflow-y:auto;padding:1.4rem;}
+.cart-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:.9rem 0;border-bottom:1px solid var(--cream-dark);
+}
+.cart-item-thumb{
+  width:48px;height:48px;border-radius:10px;
+  background:var(--green-pale);overflow:hidden;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.cart-item-thumb svg{width:24px;height:24px;color:var(--green-mid);}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-name{font-weight:700;font-size:14px;color:var(--text-dark);margin-bottom:2px;}
+.cart-item-price{font-size:13px;color:var(--green-mid);font-weight:700;}
+.cart-item-remove{
+  background:none;border:none;cursor:pointer;
+  color:var(--text-light);padding:4px;
+  border-radius:6px;display:flex;align-items:center;
+  transition:color .2s,background .2s;
+}
+.cart-item-remove:hover{color:#c0392b;background:#fdf0f0;}
+.cart-item-remove svg{width:16px;height:16px;}
+.cart-empty{
+  text-align:center;padding:3rem 1.5rem;
+  color:var(--text-light);font-size:15px;
+}
+.cart-empty-icon{
+  width:64px;height:64px;
+  background:var(--green-pale);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;
+}
+.cart-empty-icon svg{width:32px;height:32px;color:var(--green-mid);}
+.cart-footer{
+  padding:1.4rem;border-top:1px solid var(--cream-dark);
+  background:var(--cream);
+}
+.cart-total{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:1rem;
+}
+.cart-total-label{font-size:14px;color:var(--text-mid);font-weight:700;}
+.cart-total-val{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;color:var(--green-dark);
+}
+.checkout-btn{
+  width:100%;background:var(--green-dark);color:var(--white);
+  border:none;border-radius:10px;padding:14px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s;
+}
+.checkout-btn svg{width:17px;height:17px;}
+.checkout-btn:hover{background:var(--green-mid);}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:2rem;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--green-dark);color:var(--white);
+  padding:12px 22px;border-radius:100px;
+  font-size:14px;font-weight:500;z-index:400;
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+  white-space:nowrap;
+  border-left:3px solid var(--gold);
+  display:flex;align-items:center;gap:8px;
+  max-width:90vw;white-space:normal;text-align:center;
+}
+.toast svg{width:16px;height:16px;flex-shrink:0;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* ── CHECKOUT MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:500;opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  position:fixed;top:50%;left:50%;
+  transform:translate(-50%,-60%);
+  width:min(540px,95vw);
+  max-height:92vh;
+  background:var(--white);
+  border-radius:20px;
+  z-index:501;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s, transform .3s;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.modal.open{
+  opacity:1;pointer-events:all;
+  transform:translate(-50%,-50%);
+}
+.modal-header{
+  background:var(--green-dark);
+  padding:1.3rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.modal-title-wrap{display:flex;align-items:center;gap:10px;}
+.modal-title-wrap svg{width:20px;height:20px;color:var(--gold);}
+.modal-title{
+  font-family:'Playfair Display',serif;
+  color:var(--white);font-size:1.1rem;font-weight:700;
+}
+.modal-close{
+  background:transparent;border:none;
+  color:rgba(255,255,255,.7);cursor:pointer;
+  display:flex;align-items:center;padding:4px;
+  border-radius:6px;transition:background .2s;
+}
+.modal-close:hover{background:rgba(255,255,255,.15);}
+.modal-close svg{width:20px;height:20px;}
+.modal-body{overflow-y:auto;padding:1.5rem;flex:1;}
+.modal-intro{
+  font-size:14px;color:var(--text-mid);
+  line-height:1.65;margin-bottom:1.2rem;
+}
+/* mini order summary in modal */
+.modal-order-summary{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+.mos-item{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;color:var(--text-dark);
+  padding:6px 10px;background:var(--green-pale);
+  border-radius:8px;
+}
+.mos-item-name{font-weight:600;}
+.mos-item-price{color:var(--green-mid);font-weight:700;}
+.modal-total-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 10px;
+  border-top:2px solid var(--green-pale);
+  margin-bottom:4px;
+}
+.modal-total-label{font-size:13px;font-weight:700;color:var(--text-mid);}
+.modal-total-val{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:800;color:var(--green-dark);
+}
+.modal-divider{
+  height:1px;background:var(--cream-dark);
+  margin:1rem 0;
+}
+.modal-fields{
+  display:grid;grid-template-columns:1fr 1fr;gap:.9rem;
+}
+.mfield{display:flex;flex-direction:column;gap:5px;}
+.mfield.full{grid-column:1 / -1;}
+.mfield label{
+  font-size:11px;font-weight:700;
+  color:var(--text-mid);letter-spacing:1px;text-transform:uppercase;
+}
+.mfield input,.mfield textarea{
+  background:var(--cream);
+  border:1.5px solid rgba(45,74,45,.15);
+  border-radius:8px;padding:10px 12px;
+  font-size:14px;font-family:'DM Sans',sans-serif;
+  color:var(--text-dark);outline:none;resize:none;
+  transition:border-color .2s;
+}
+.mfield input:focus,.mfield textarea:focus{border-color:var(--green-mid);}
+.mfield input.error,.mfield textarea.error{border-color:#e74c3c;}
+.modal-footer{
+  padding:1.2rem 1.5rem;
+  border-top:1px solid var(--cream-dark);
+  background:var(--cream);
+  flex-shrink:0;
+}
+.modal-note{
+  font-size:12px;color:var(--text-light);
+  margin-bottom:.9rem;line-height:1.55;
+  display:flex;align-items:flex-start;gap:6px;
+}
+.modal-note svg{flex-shrink:0;margin-top:2px;}
+.modal-submit-btn{
+  width:100%;
+  background:var(--green-dark);color:var(--white);
+  border:none;border-radius:10px;padding:14px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s;
+}
+.modal-submit-btn svg{width:17px;height:17px;}
+.modal-submit-btn:hover{background:var(--green-mid);}
+
+@media(max-width:480px){
+  .modal-fields{grid-template-columns:1fr;}
+  .mfield.full{grid-column:1;}
+}
+
+/* ── FADE IN ── */
+.js .fade-in{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.js .fade-in.visible{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .js .fade-in{opacity:1;transform:none;transition:none;}
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+}
+
+</style>
+<style>
+@media(max-width:1024px){
+  nav{padding:0 2rem;}
+  .hero-content{padding:4rem 2rem;gap:3rem;}
+  .about{padding:5rem 2rem;gap:3rem;}
+  .products-section,.fact-section,.heritage-section,.contact-section{padding:5rem 2rem;}
+  .acc-section{padding:5rem 2rem;}
+  .countdown-section{padding:3.5rem 2rem;}
+  .recipe-section{padding:5rem 2rem;}
+  footer{padding:3rem 2rem;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+
+  /* Hero */
+  .hero-content{
+    grid-template-columns:1fr;
+    padding:3rem 1.5rem 2rem;
+    gap:2.5rem;
+  }
+  .hero-desc{font-size:15px;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .hero-showcase{gap:.75rem;}
+  .showcase-name{font-size:.9rem;}
+
+  /* About */
+  .about{grid-template-columns:1fr;padding:4rem 1.5rem;gap:2rem;}
+  .about-visual{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+  }
+  .about-block.tall{grid-row:span 1;}
+  .about-block.tall .img-placeholder{min-height:180px;}
+  .about-block .img-placeholder{min-height:140px;}
+
+  /* Products */
+  .products-section{padding:4rem 1.5rem;}
+  .products-header{flex-direction:column;align-items:flex-start;}
+  .products-grid{grid-template-columns:1fr 1fr;}
+
+  /* Countdown */
+  .countdown-section{padding:3rem 1.5rem;}
+  .countdown-inner{flex-direction:column;align-items:flex-start;}
+  .countdown-unit{width:64px;padding:.8rem 0;}
+  .countdown-num{font-size:1.5rem;}
+  .countdown-colon{padding-bottom:.9rem;font-size:1.2rem;}
+
+  /* Accessories */
+  .acc-section{padding:4rem 1.5rem;}
+  .acc-head{flex-direction:column;align-items:flex-start;}
+  .acc-grid{grid-template-columns:1fr;}
+  .acc-bundle{flex-direction:column;align-items:flex-start;text-align:left;}
+
+  /* Facts */
+  .fact-section{padding:4rem 1.5rem;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+
+  /* Recipes */
+  .recipe-section{padding:4rem 1.5rem;}
+  .recipe-grid{grid-template-columns:1fr 1fr;}
+
+  /* Heritage */
+  .heritage-section{padding:4rem 1.5rem;}
+  .testimonials{grid-template-columns:1fr;}
+
+  /* Contact */
+  .contact-section{padding:4rem 1.5rem;}
+  .contact-form{grid-template-columns:1fr;}
+  .form-group.full{grid-column:1;}
+
+  /* Footer */
+  footer{padding:3rem 1.5rem;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+
+  /* Cart */
+  .cart-drawer{width:100%;}
+
+  /* Ticker */
+  .zambian-strip{gap:1rem;padding:12px 1.5rem;}
+}
+
+@media(max-width:480px){
+  .countdown-timer{gap:.5rem;}
+  .countdown-unit{width:52px;padding:.7rem 0;border-radius:12px;}
+  .countdown-num{font-size:1.2rem;}
+  .countdown-label{font-size:8px;}
+  .hero-title{font-size:2.1rem;}
+  .hero-actions{flex-direction:column;}
+  .btn-primary,.btn-outline{width:100%;justify-content:center;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .hero-stat-num{font-size:1.4rem;}
+  .products-grid{grid-template-columns:1fr;}
+  .recipe-grid{grid-template-columns:1fr;}
+  .fact-grid{grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .zambian-strip span:nth-child(n+7){display:none;}
+  .about-visual{grid-template-columns:1fr;}
+  .about-block.tall .img-placeholder{min-height:220px;}
+}
+
+/* ══ ADDITIONS: accessibility, new shop, cart controls, forms ══ */
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.mfield input:focus-visible,.mfield textarea:focus-visible,
+.form-group input:focus-visible,.form-group textarea:focus-visible,.form-group select:focus-visible{outline:2px solid var(--green-mid);outline-offset:1px;}
+.skip-link{position:absolute;left:-999px;top:8px;background:var(--gold);color:var(--green-dark);padding:8px 14px;border-radius:8px;font-weight:700;z-index:999;text-decoration:none;}
+.skip-link:focus{left:8px;}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.showcase-img .img-placeholder{border-radius:10px;}
+
+/* product cards */
+.product-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:1.1rem;}
+.product-tile{
+  height:100%;width:100%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#335533,#4c7c4c);
+}
+.product-tile svg{width:60px;height:60px;color:var(--gold);opacity:.9;}
+.variant-toggle{display:flex;gap:4px;margin-bottom:1.1rem;background:rgba(255,255,255,.08);padding:4px;border-radius:10px;}
+.variant-btn{
+  flex:1;border:0;background:transparent;color:rgba(255,255,255,.75);
+  padding:8px 10px;border-radius:7px;font:600 13px 'DM Sans',sans-serif;cursor:pointer;transition:all .2s;
+}
+.variant-btn[aria-pressed="true"]{background:var(--gold);color:var(--green-dark);}
+.product-card{cursor:default;}
+
+/* herbs */
+.herb-panel{
+  margin-top:2.2rem;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;
+}
+.herb-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:4px;}
+.herb-sub{font-size:13.5px;color:rgba(255,255,255,.6);margin-bottom:1.4rem;}
+.herb-sub strong{color:var(--gold);}
+.herb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.8rem;}
+.herb-item{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:.7rem .75rem;transition:border-color .2s,background .2s;
+}
+.herb-item:hover{background:rgba(255,255,255,.1);border-color:rgba(196,164,74,.35);}
+.herb-leaf{
+  width:34px;height:34px;border-radius:9px;background:rgba(90,138,90,.35);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.herb-leaf svg{width:17px;height:17px;color:#a8dca8;}
+.herb-name{flex:1;color:var(--white);font-weight:600;font-size:14px;min-width:0;}
+.herb-leaf.has-photo{width:44px;height:44px;border-radius:12px;overflow:hidden;background:none;}
+.herb-leaf img{width:100%;height:100%;object-fit:cover;display:block;}
+.herb-price{display:block;color:var(--gold);font-weight:600;font-size:12px;margin-top:1px;}
+.nav-logo-mark{width:35px;height:35px;flex-shrink:0;}
+.herb-add{
+  width:34px;height:34px;border-radius:9px;border:0;background:var(--gold);color:var(--green-dark);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;
+}
+.herb-add:hover{background:var(--white);transform:scale(1.08);}
+.herb-add svg{width:16px;height:16px;}
+.shop-fallback{color:rgba(255,255,255,.7);font-size:15px;padding:1rem 0;}
+
+/* cart */
+.cart-note{font-size:12px;color:var(--text-light);margin:-4px 0 12px;line-height:1.5;}
+.cart-item-unit{font-size:12px;color:var(--text-light);}
+.qty{display:inline-flex;align-items:center;gap:8px;margin-top:6px;}
+.qty button{
+  width:28px;height:28px;border-radius:8px;border:1px solid var(--cream-dark);background:var(--white);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--green-dark);
+}
+.qty button:hover{background:var(--green-pale);}
+.qty button svg{width:14px;height:14px;}
+.qty-val{min-width:22px;text-align:center;font-weight:700;font-size:14px;}
+
+/* checkout modal as a real form */
+.modal form{display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden;}
+.modal-alt-btn{
+  width:100%;margin-top:.6rem;background:transparent;color:var(--green-dark);
+  border:1.5px solid var(--green-dark);border-radius:10px;padding:12px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.modal-alt-btn svg{width:16px;height:16px;}
+.modal-alt-btn:hover{background:var(--green-pale);}
+.modal-sent{padding:1.5rem;overflow-y:auto;}
+.modal-sent h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dark);margin-bottom:.6rem;}
+.modal-sent p{font-size:14px;color:var(--text-mid);line-height:1.65;margin-bottom:1rem;}
+.modal-sent textarea{
+  width:100%;height:150px;border:1.5px solid rgba(45,74,45,.15);border-radius:8px;background:var(--cream);
+  padding:10px;font:13px/1.5 'DM Sans',sans-serif;color:var(--text-dark);margin-bottom:.8rem;resize:vertical;
+}
+.modal-sent .modal-alt-btn:first-of-type{margin-top:0;}
+.field-hint{font-size:11.5px;color:var(--text-light);}
+
+/* contact form */
+.form-status{font-size:14px;line-height:1.6;color:var(--text-mid);min-height:1.2em;text-align:left;}
+.form-status.ok{color:var(--green-mid);font-weight:600;}
+.form-status.err{color:#b03a2e;font-weight:600;}
+.form-privacy{font-size:12px;color:var(--text-light);text-align:left;}
+.submit-btn:disabled{opacity:.6;cursor:wait;}
+
+/* hidden must win over display rules */
+.modal form[hidden],.modal-sent[hidden]{display:none;}
+
+/* single testimonial stays centred */
+.testimonials > .testi-card:only-child{max-width:560px;margin:0 auto;grid-column:1 / -1;}
+
+/* countdown ready state */
+.countdown-ready-wrap{flex-shrink:0;max-width:340px;}
+.countdown-ready-wrap[hidden]{display:none;}
+</style>
+</head>
+<body id="top">
+
+<!-- CART -->
+<a class="skip-link" href="#products">Skip to the shop</a>
+<div class="cart-overlay" id="cartOverlay" data-action="close-cart"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartHeading" aria-hidden="true">
+  <div class="cart-header-bar">
+    <div class="cart-title-wrap">
+      <i data-lucide="shopping-basket"></i>
+      <span class="cart-title" id="cartHeading">Your Order</span>
+    </div>
+    <button type="button" class="cart-close-btn" data-action="close-cart" aria-label="Close cart" id="cartCloseBtn">
+      <i data-lucide="x"></i>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-label">Estimated total</span>
+      <span class="cart-total-val" id="cartTotal">K0</span>
+    </div>
+    <p class="cart-note">Bellson Farms confirms the final price and delivery with you before anything is dispatched.</p>
+    <button type="button" class="checkout-btn" data-action="open-checkout">
+      <i data-lucide="clipboard-list"></i> Request this order
+    </button>
+  </div>
+</aside>
+
+<!-- CHECKOUT MODAL
+     There is no payment or order database on this site. The customer sends an order REQUEST by
+     email or WhatsApp; staff must confirm prices against the approved price list. -->
+<div class="modal-overlay" id="checkoutOverlay" data-action="close-checkout"></div>
+<div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true">
+  <div class="modal-header">
+    <div class="modal-title-wrap">
+      <i data-lucide="clipboard-list"></i>
+      <span class="modal-title" id="checkoutTitle">Request Your Order</span>
+    </div>
+    <button type="button" class="modal-close" data-action="close-checkout" aria-label="Close" id="checkoutCloseBtn">
+      <i data-lucide="x"></i>
+    </button>
+  </div>
+
+  <form id="checkoutForm" autocomplete="on">
+    <div class="modal-body">
+      <p class="modal-intro">Tell us how to reach you and where to deliver. We'll confirm availability, the final total and delivery before dispatch.</p>
+      <div class="modal-order-summary" id="modalOrderSummary"></div>
+      <div class="modal-total-row" id="modalTotalRow"></div>
+      <div class="modal-divider"></div>
+      <div class="modal-fields">
+        <div class="mfield">
+          <label for="co-name">Full Name *</label>
+          <input type="text" id="co-name" name="name" placeholder="e.g. Miriam Chilumba" required maxlength="80" autocomplete="name">
+        </div>
+        <div class="mfield">
+          <label for="co-phone">Phone Number *</label>
+          <input type="tel" id="co-phone" name="phone" placeholder="+260 97X XXX XXX" required maxlength="20" autocomplete="tel">
+        </div>
+        <div class="mfield full">
+          <label for="co-email">Email Address *</label>
+          <input type="email" id="co-email" name="email" placeholder="you@example.com" required maxlength="120" autocomplete="email">
+        </div>
+        <div class="mfield full">
+          <label for="co-address">Delivery Address / Area</label>
+          <input type="text" id="co-address" name="address" placeholder="e.g. Kabulonga, Lusaka" maxlength="160" autocomplete="street-address">
+        </div>
+        <div class="mfield full">
+          <label for="co-notes">Special Notes (optional)</label>
+          <textarea id="co-notes" name="notes" rows="2" maxlength="300" placeholder="Live or dressed, delivery time, anything else..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="modal-note">
+        <i data-lucide="info" style="width:13px;height:13px;"></i>
+        <span>This opens a pre-filled message in your email app or WhatsApp. Your order is not placed until you press Send and we confirm it. We use your details only to process this order.</span>
+      </p>
+      <button type="submit" class="modal-submit-btn"><i data-lucide="send"></i> Send order request by email</button>
+      <button type="button" class="modal-alt-btn" data-action="order-whatsapp"><i data-lucide="message-circle"></i> Send on WhatsApp instead</button>
+    </div>
+  </form>
+
+  <div class="modal-sent" id="orderSent" hidden>
+    <h3 id="orderSentTitle">Almost done: press Send</h3>
+    <p id="orderSentText"></p>
+    <textarea id="orderCopyBox" readonly aria-label="Your order text"></textarea>
+    <button type="button" class="modal-alt-btn" data-action="copy-order"><i data-lucide="copy"></i> Copy order text</button>
+    <button type="button" class="modal-alt-btn" data-action="back-to-form"><i data-lucide="pencil"></i> Edit my details</button>
+    <button type="button" class="modal-alt-btn" data-action="clear-order"><i data-lucide="check"></i> I've sent it, clear my cart</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- NAV -->
+<nav aria-label="Main">
+  <a href="#top" class="nav-logo" aria-label="Bellson Farms home">
+    
+      <img src="BF Logo.png" alt="Smoked whole Nkhuku" class="nav-logo-mark">
+    
+    <div>
+      <div class="nav-logo-text">Bellson</div>
+      <div class="nav-logo-sub">Farms · Proudly Zambian</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#accessories">Accessories</a></li>
+    <li><a href="#recipes">Recipes</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <button type="button" class="nav-cart-btn" data-action="open-cart">
+        <i data-lucide="shopping-basket"></i>
+        Cart
+        <span class="cart-count-badge" id="navCartBadge">0</span>
+      </button>
+    </li>
+  </ul>
+
+  <button type="button" class="hamburger" id="hamburger" data-action="toggle-menu" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    <i data-lucide="menu"></i>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about">Our Story</a>
+  <a href="#products">Shop</a>
+  <a href="#accessories">Accessories</a>
+  <a href="#recipes">Recipes</a>
+  <a href="#contact">Contact</a>
+  <a href="#cart" data-action="close-menu-open-cart" style="color:var(--gold);font-weight:600;">
+    Cart <span id="mobileCartBadge" style="display:none;"></span>
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero pattern-bg">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <!-- LEFT -->
+    <div>
+      <div class="hero-badge">
+        <i data-lucide="map-pin"></i>
+        Grown the Smart Way
+      </div>
+      <h1 class="hero-title">Fresh from the heart of <em>Zambia</em></h1>
+      <p class="hero-desc">Bellson Farms combines smart agriculture with Zambian heritage to bring you smoked and fresh Nkhuku, farm eggs and garden herbs, raised and grown sustainably.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          Shop the Farm <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="#about" class="btn-outline">
+          <i data-lucide="book-open"></i> Our Story
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Zambian</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3+</span>
+          <span class="hero-stat-label">Product Lines</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">Smart</span>
+          <span class="hero-stat-label">Agriculture</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: product previews (prices are filled from the single catalog in the script) -->
+    <div class="hero-showcase">
+
+      <a href="#products" class="showcase-card">
+        <div class="showcase-img">
+          <img src="Nkhuku smoked.png" alt="Smoked whole Nkhuku">
+          <div class="img-placeholder" style="display:none;width:60px;height:60px;"><i data-lucide="flame" style="width:22px;height:22px;"></i></div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-name">Smoked Nkhuku</div>
+          <div class="showcase-sub">Whole chicken · Smoked</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="showcase-price" data-price="smoked-chicken">K180</div>
+          <span class="showcase-tag">SMOKED</span>
+        </div>
+      </a>
+
+      <a href="#products" class="showcase-card">
+        <div class="showcase-img">
+          <img src="Nkuku.png" alt="Nkhuku, live or dressed">
+          <div class="img-placeholder" style="display:none;width:60px;height:60px;"><i data-lucide="bird" style="width:22px;height:22px;"></i></div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-name">Nkhuku: Live or Dressed</div>
+          <div class="showcase-sub">Your choice · Same price</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="showcase-price" data-price="chicken-dressed">K150</div>
+          <span class="showcase-tag">POPULAR</span>
+        </div>
+      </a>
+
+      <a href="#products" class="showcase-card">
+        <div class="showcase-img">
+          <img src="eggs.jpg" alt="Eggs">
+          <div class="img-placeholder" style="width:60px;height:60px;"><i data-lucide="egg" style="width:24px;height:24px;"></i></div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-name">Farm Eggs</div>
+          <div class="showcase-sub">Sold by the tray</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="showcase-price" data-price="eggs-tray">K70</div>
+          <span class="showcase-tag">FRESH</span>
+        </div>
+      </a>
+
+      <a href="#products" class="showcase-card">
+        <div class="showcase-img">
+          <img src="herbs.jpg" alt="Fresh Herbs">
+          <div class="img-placeholder" style="width:60px;height:60px;"><i data-lucide="leaf" style="width:24px;height:24px;"></i></div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-name">Fresh Herbs</div>
+          <div class="showcase-sub">Basil, thyme, mint &amp; more · Per bundle</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="showcase-price" data-price-from="herbs">From K25</div>
+          <span class="showcase-tag">FRESH</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- TICKER STRIP -->
+<div class="zambian-strip">
+  <span><i data-lucide="sprout"></i> Smart Agriculture</span>
+  <div class="strip-dot"></div>
+  <span><i data-lucide="flag"></i> Zambian Heritage</span>
+  <div class="strip-dot"></div>
+  <span><i data-lucide="leaf"></i> Farm to Table</span>
+  <div class="strip-dot"></div>
+  <span><i data-lucide="star"></i> Freshest Quality</span>
+  <div class="strip-dot"></div>
+  <span><i data-lucide="recycle"></i> Sustainably Grown</span>
+  <div class="strip-dot"></div>
+  <span><i data-lucide="heart"></i> Proudly Local</span>
+</div>
+
+<!-- NEXT BATCH COUNTDOWN (display only: it never controls what can be ordered) -->
+<section class="countdown-section pattern-bg">
+  <div class="countdown-inner">
+    <div class="countdown-copy fade-in">
+      <div class="section-label"><i data-lucide="bird"></i> Next Batch</div>
+      <h2 class="countdown-title" id="cdTitle">Our next batch of <em>Nkhuku</em> is nearly ready</h2>
+      <p class="countdown-sub" id="cdSub">Free-range, corn-fed and raised the slow way. This batch goes to the gate and to delivery the moment it's ready. Get notified the day it drops.</p>
+      <a href="#contact" class="countdown-notify" id="cdCta">
+        <i data-lucide="bell"></i> <span>Notify me when it's ready</span>
+      </a>
+    </div>
+    <div class="countdown-timer" id="batchCountdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-colon">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-colon">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Mins</span></div>
+      <div class="countdown-colon">:</div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Secs</span></div>
+    </div>
+    <div class="countdown-ready-wrap" id="cdReady" hidden>
+      <div class="countdown-ready"><i data-lucide="circle-check" style="width:18px;height:18px;vertical-align:-3px;margin-right:6px;"></i>This batch is ready!</div>
+      <div class="countdown-ready-sub">Fresh Nkhuku is available now. Choose live, dressed or smoked below.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="fade-in">
+      <div class="section-label"><i data-lucide="book-open"></i> Our Story</div>
+      <h2 class="section-title">Where smart farming meets <em>Zambian pride</em></h2>
+      <p class="section-body">Bellson Farms was founded on a simple belief: that Zambia deserves access to the freshest, most nutritious food — grown right here at home, using intelligent farming practices that honour our land and our heritage.</p>
+      <p class="section-body">We raise our chickens, collect fresh eggs and grow our herbs the smart way, so every product is nutritious, sustainably produced, and deeply rooted in Zambian culture.</p>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon"><i data-lucide="cpu"></i></div>
+          <div>
+            <div class="pillar-title">Smart Agriculture</div>
+            <div class="pillar-body">Modern techniques combined with traditional wisdom for better yields and healthier animals.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><i data-lucide="flag"></i></div>
+          <div>
+            <div class="pillar-title">Zambian Heritage</div>
+            <div class="pillar-body">Every product proudly celebrates local culture, starting with Nkhuku, the Zambian word for chicken.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon"><i data-lucide="recycle"></i></div>
+          <div>
+            <div class="pillar-title">Sustainable Practices</div>
+            <div class="pillar-body">Farm-to-table goodness with minimal environmental footprint, for a better Zambia tomorrow.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ABOUT IMAGE GRID ═══
+         To add your images, just change the src="" value on each <img> tag below
+         to your image filename (e.g. src="farm-photo.jpg").
+         The images must be in the same folder as this HTML file.           -->
+    <div class="about-visual fade-in">
+
+      <!-- TALL left block -->
+      <div class="about-block tall">
+        <img src="Nkuku.png"
+             alt="Nkhuku on the farm"
+             style="width:100%;height:100%;min-height:360px;object-fit:cover;display:block;border-radius:16px;">
+        <div class="about-block-overlay">
+          <div class="about-block-label">Nkhuku</div>
+          <div class="about-block-sub">Live · Dressed</div>
+        </div>
+      </div>
+
+      <!-- Top-right block -->
+      <div class="about-block">
+        <img src="Nkhuku smoked.png"
+             alt="Smoked whole Nkhuku"
+             style="width:100%;height:100%;min-height:160px;object-fit:cover;display:block;border-radius:16px;">
+        <div class="about-block-overlay">
+          <div class="about-block-label">Smoked Nkhuku</div>
+          <div class="about-block-sub">Whole chicken</div>
+        </div>
+      </div>
+
+      <!-- Bottom-right block: add a herb photo later by swapping this tile for an <img> -->
+      <div class="about-block">
+        <img src="herbs2.jpg"
+             alt="Smoked whole Nkhuku"
+             style="width:100%;height:100%;min-height:160px;object-fit:cover;display:block;border-radius:16px;">
+        <div class="about-block-overlay">
+          <div class="about-block-label">Fresh Herbs</div>
+          <div class="about-block-sub">By the bundle</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS (cards are generated from the one CATALOG in the script at the bottom) -->
+<section id="products" class="products-section">
+  <div class="products-inner">
+    <div class="products-header fade-in">
+      <div>
+        <div class="section-label"><i data-lucide="shopping-bag"></i> Fresh Products</div>
+        <h2 class="section-title" style="color:var(--white);">Shop the farm</h2>
+      </div>
+      <button type="button" class="btn-primary" data-action="open-cart">
+        <i data-lucide="shopping-basket"></i> View Cart
+      </button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div class="herb-panel fade-in">
+      <div class="herb-title">Fresh herb bundles</div>
+      <div class="herb-sub">Nine garden herbs, each priced per bundle</div>
+      <div class="herb-grid" id="herbGrid"></div>
+    </div>
+
+    <noscript><p class="shop-fallback">Online ordering needs JavaScript. To order, WhatsApp or call us on +260 951 035 739.</p></noscript>
+  </div>
+</section>
+
+<!-- FACTS -->
+<!-- ══ FARM SHOP / ACCESSORIES ══ -->
+<section id="accessories" class="acc-section pattern-bg">
+  <div class="acc-inner">
+    <div class="acc-head fade-in">
+      <div class="acc-head-copy">
+        <div class="section-label"><i data-lucide="shopping-bag"></i> Farm Shop</div>
+        <h2 class="section-title">Take a little of the farm home</h2>
+        <p class="section-body" style="margin-bottom:0;">Beyond the produce, our farm shop carries a small run of accessories made by hands we know — stitched, cast and turned right here in Zambia. Buy them at the gate in Lusaka, or add them to your delivery.</p>
+      </div>
+      <div class="acc-head-note">
+        <i data-lucide="hand-heart"></i> Made in Zambia · Limited batches
+      </div>
+    </div>
+
+    <div class="acc-grid">
+
+      <!-- CHITENGE TOTE BAG -->
+      <div class="acc-card fade-in">
+        <div class="acc-img">
+          <!-- REPLACE src WITH YOUR CHITENGE TOTE BAG IMAGE -->
+          <img src="Tote bag.jpg" alt="Bellson Farms chitenge tote bag">
+          <div class="img-placeholder" style="display:none;">
+            <i data-lucide="image" style="width:32px;height:32px;"></i>
+            <span>Chitenge Tote Bag<br>Product Image</span>
+          </div>
+          <div class="acc-tag">Handmade</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-name">Chitenge Tote Bag</div>
+          <div class="acc-sub">Cotton canvas · 40 × 38 cm · Lined</div>
+          <p class="acc-desc">Stitched in Lusaka from heavy cotton canvas with a chitenge-print panel and reinforced straps. Roomy enough for a full market run — or a week of Bellson veggies.</p>
+          <div class="acc-chips">
+          <span class="acc-chip"><i data-lucide="scissors"></i> Hand-stitched</span>
+          <span class="acc-chip"><i data-lucide="recycle"></i> Reusable</span>
+          <span class="acc-chip"><i data-lucide="package"></i> Holds 8kg</span>
+          </div>
+          <div class="acc-foot">
+            <div>
+              <span class="acc-price">K120</span>
+              <span class="acc-price-sub">each · free with orders over K500</span>
+            </div>
+            <button type="button" class="acc-btn" data-action="add" data-id="tote">
+              <i data-lucide="plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FARM FRIDGE MAGNET -->
+      <div class="acc-card fade-in">
+        <div class="acc-img">
+          <!-- REPLACE src WITH YOUR FARM FRIDGE MAGNET IMAGE -->
+          <img src="Fridge magnet.jpg" alt="Bellson Farms fridge magnet">
+          <div class="img-placeholder" style="display:none;">
+            <i data-lucide="image" style="width:32px;height:32px;"></i>
+            <span>Farm Fridge Magnet<br>Product Image</span>
+          </div>
+          <div class="acc-tag">Collectible</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-name">Farm Fridge Magnet</div>
+          <div class="acc-sub">Cast resin · 65 mm · Set of 1</div>
+          <p class="acc-desc">A little piece of the farm for your kitchen door — our maize-and-sun crest hand-finished in farm greens and gold. Strong magnet, no slipping down the fridge.</p>
+          <div class="acc-chips">
+          <span class="acc-chip"><i data-lucide="sparkles"></i> Hand-finished</span>
+          <span class="acc-chip"><i data-lucide="shield-check"></i> Strong hold</span>
+          <span class="acc-chip"><i data-lucide="gift"></i> Great gift</span>
+          </div>
+          <div class="acc-foot">
+            <div>
+              <span class="acc-price">K35</span>
+              <span class="acc-price-sub">each · 3 for K90</span>
+            </div>
+            <button type="button" class="acc-btn" data-action="add" data-id="magnet">
+              <i data-lucide="plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- WOODEN SPICE BOWL -->
+      <div class="acc-card fade-in">
+        <div class="acc-img">
+          <!-- REPLACE src WITH YOUR WOODEN SPICE BOWL IMAGE -->
+          <img src="Spice bowl.jpg" alt="Bellson Farms wooden spice bowl">
+          <div class="img-placeholder" style="display:none;">
+            <i data-lucide="image" style="width:32px;height:32px;"></i>
+            <span>Wooden Spice Bowl<br>Product Image</span>
+          </div>
+          <div class="acc-tag">Farm-crafted</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-name">Wooden Spice Bowl</div>
+          <div class="acc-sub">Local hardwood · 12 cm · Food-safe</div>
+          <p class="acc-desc">Turned from offcuts of local hardwood and rubbed with food-safe oil. Perfect for salt, chilli, groundnut powder or serving relish straight to the table.</p>
+          <div class="acc-chips">
+          <span class="acc-chip"><i data-lucide="trees"></i> Local timber</span>
+          <span class="acc-chip"><i data-lucide="leaf"></i> Food-safe oil</span>
+          <span class="acc-chip"><i data-lucide="utensils"></i> Table-ready</span>
+          </div>
+          <div class="acc-foot">
+            <div>
+              <span class="acc-price">K95</span>
+              <span class="acc-price-sub">each · pairs beautifully with the tote</span>
+            </div>
+            <button type="button" class="acc-btn" data-action="add" data-id="bowl">
+              <i data-lucide="plus"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-bundle fade-in">
+      <div>
+        <div class="acc-bundle-title"><i data-lucide="gift"></i> The Bellson Gift Set</div>
+        <div class="acc-bundle-sub">All three — tote bag, fridge magnet and spice bowl — wrapped in kraft paper with a handwritten note. Save K40.</div>
+      </div>
+      <button type="button" class="acc-btn" data-action="add" data-id="gift">
+        <i data-lucide="plus"></i> Add gift set · K210
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FACT SECTION -->
+<section class="fact-section">
+  <div class="fact-inner fade-in">
+    <div class="section-label" style="justify-content:center;"><i data-lucide="bar-chart-2"></i> By the numbers</div>
+    <h2 class="section-title">Nutrition you can count on</h2>
+    <div class="fact-grid">
+      <div class="fact-card">
+        <div class="fact-card-icon"><i data-lucide="zap"></i></div>
+        <span class="fact-num">30g</span>
+        <span class="fact-label">Protein per serving of Nkhuku</span>
+      </div>
+      <div class="fact-card">
+        <div class="fact-card-icon"><i data-lucide="shield-check"></i></div>
+        <span class="fact-num">0g</span>
+        <span class="fact-label">Artificial additives — ever</span>
+      </div>
+      <div class="fact-card">
+        <div class="fact-card-icon"><i data-lucide="flag"></i></div>
+        <span class="fact-num">100%</span>
+        <span class="fact-label">Zambian grown &amp; sourced</span>
+      </div>
+      <div class="fact-card">
+        <div class="fact-card-icon"><i data-lucide="package"></i></div>
+        <span class="fact-num">3</span>
+        <span class="fact-label">Fresh product categories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section id="recipes" class="recipe-section">
+  <div class="fade-in" style="text-align:center;">
+    <div class="section-label" style="justify-content:center;"><i data-lucide="utensils"></i> Meal Ideas</div>
+    <h2 class="section-title">From our <em>kitchen</em> to yours</h2>
+    <p class="section-body" style="max-width:540px;margin:0 auto;">Quick, delicious recipes that make the most of our Nkhuku, eggs and fresh herbs.</p>
+  </div>
+  <div class="recipe-grid">
+
+    <div class="recipe-card fade-in">
+      <div class="recipe-img">
+        <img src="chicken stir fry.jpg" alt="Quick Nkhuku Stir Fry">
+        <div class="img-placeholder" style="display:none;height:140px;background:linear-gradient(135deg,#d8e8c0,#b0cc80);">
+          <i data-lucide="flame" style="width:28px;height:28px;"></i>
+          <span>Stir Fry</span>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-name"><i data-lucide="flame"></i> Quick Nkhuku Stir Fry</div>
+        <ol class="recipe-steps">
+          <li class="recipe-step"><span class="step-num">1</span> Heat 2 tbsp oil. Add sliced onion and bell peppers, sauté until softened.</li>
+          <li class="recipe-step"><span class="step-num">2</span> Add chopped dressed Nkhuku and 2 tsp soy sauce, stir fry until cooked through.</li>
+          <li class="recipe-step"><span class="step-num">3</span> Season with salt, pepper, and a pinch of chilli flakes. Serve over rice.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="recipe-card fade-in">
+      <div class="recipe-img">
+        <img src="How-to-Roast-a-Chicken-square.jpg" alt="Herb-Roasted Whole Nkhuku">
+        <div class="img-placeholder" style="display:none;height:140px;background:linear-gradient(135deg,#c8d8a0,#a0b870);">
+          <i data-lucide="thermometer" style="width:28px;height:28px;"></i>
+          <span>Herb-Roasted Nkhuku</span>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-name"><i data-lucide="thermometer"></i> Herb-Roasted Whole Nkhuku</div>
+        <ol class="recipe-steps">
+          <li class="recipe-step"><span class="step-num">1</span> Rub a dressed Nkhuku with garlic, lemon, salt, olive oil and chopped rosemary and thyme.</li>
+          <li class="recipe-step"><span class="step-num">2</span> Roast at 200°C for about 1 hr 20 min, basting halfway through.</li>
+          <li class="recipe-step"><span class="step-num">3</span> Rest 10 minutes before carving. Serve with roasted potatoes.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="recipe-card fade-in">
+      <div class="recipe-img">
+        <img src="smoked salad.jpg" alt="Smoked Herbs">
+        <div class="img-placeholder" style="height:140px;background:linear-gradient(135deg,#b8d0a0,#8fb070);">
+          <i data-lucide="salad" style="width:30px;height:30px;"></i>
+          <span>Smoked Nkhuku &amp; Herb Salad</span>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-name"><i data-lucide="salad"></i> Smoked Nkhuku &amp; Herb Salad</div>
+        <ol class="recipe-steps">
+          <li class="recipe-step"><span class="step-num">1</span> Pull the smoked Nkhuku into strips, discarding the skin if you like.</li>
+          <li class="recipe-step"><span class="step-num">2</span> Toss with chopped parsley, mint and dill, lemon juice, olive oil, salt and pepper.</li>
+          <li class="recipe-step"><span class="step-num">3</span> Serve on fresh greens or in bread rolls.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="recipe-card fade-in">
+      <div class="recipe-img">
+        <img src="chive omelet.jpg" alt="Chive Omelette">
+        <div class="img-placeholder" style="height:140px;background:linear-gradient(135deg,#e8e0b0,#d0c070);">
+          <i data-lucide="egg" style="width:30px;height:30px;"></i>
+          <span>Farm Egg &amp; Chive Omelette</span>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-name"><i data-lucide="egg"></i> Farm Egg &amp; Chive Omelette</div>
+        <ol class="recipe-steps">
+          <li class="recipe-step"><span class="step-num">1</span> Whisk 3 eggs with salt, pepper and a splash of water.</li>
+          <li class="recipe-step"><span class="step-num">2</span> Pour into a buttered pan over medium heat, stirring gently until just set.</li>
+          <li class="recipe-step"><span class="step-num">3</span> Scatter chopped chives and parsley, fold, and serve warm.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section class="heritage-section">
+  <div class="heritage-inner fade-in">
+    <div class="section-label"><i data-lucide="heart"></i> Zambian Heritage</div>
+    <h2 class="section-title" style="color:var(--white);">More than food — it's a story</h2>
+    <p class="section-body">Everything from Bellson Farms carries the pride of Zambian farming, the warmth of local communities, and the promise of a better food system for our nation.</p>
+    <div class="heritage-quote">
+      Did you know? <em>Nkhuku</em> is the traditional Zambian word for chicken — and we wear that name as a badge of honour.
+    </div>
+    <div class="testimonials">
+      <div class="testi-card">
+        <div class="testi-stars">
+          <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+        </div>
+        <p class="testi-text">"The freshest chicken I have found in Lusaka. You can taste the difference — no chemicals, no shortcuts."</p>
+        <div class="testi-name">Miriam C.</div>
+        <div class="testi-loc">Lusaka, Zambia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner fade-in">
+    <div class="section-label" style="justify-content:center;"><i data-lucide="mail"></i> Get in Touch</div>
+    <h2 class="section-title">Order in bulk or say hello</h2>
+    <p class="section-body">For wholesale orders, retail partnerships, or general enquiries, reach out and we'll get back to you swiftly.</p>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="cf-first">First Name *</label>
+        <input type="text" id="cf-first" name="first_name" placeholder="Miriam" required maxlength="60" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="cf-last">Last Name</label>
+        <input type="text" id="cf-last" name="last_name" placeholder="Chilumba" maxlength="60" autocomplete="family-name">
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Email Address *</label>
+        <input type="email" id="cf-email" name="email" placeholder="you@example.com" required maxlength="120" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="cf-phone">Phone Number</label>
+        <input type="tel" id="cf-phone" name="phone" placeholder="+260 97X XXX XXX" maxlength="20" autocomplete="tel">
+      </div>
+      <div class="form-group full">
+        <label for="cf-type">Enquiry Type</label>
+        <select id="cf-type" name="enquiry_type">
+          <option>General enquiry</option>
+          <option>Bulk / wholesale order</option>
+          <option>Retail partnership</option>
+          <option>Press &amp; media</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="cf-message">Message *</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Tell us what you need..." required maxlength="1500"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <div class="form-group full">
+        <button type="submit" class="submit-btn" id="cfSubmit">
+          <i data-lucide="send"></i> <span>Send Message</span>
+        </button>
+      </div>
+      <div class="form-group full">
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+        <p class="form-privacy">We use your details only to reply to your message.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Bellson Farms</div>
+      <div class="footer-brand-sub">Proudly Zambian</div>
+      <p class="footer-desc">Combining smart agriculture with Zambian heritage to bring you the freshest, most delicious foods. Grown the smart way — for a better Zambia.</p>
+      <div class="footer-socials">
+        <!-- Social icons removed until real profile URLs exist (they pointed to "#"). Paste the originals back with real links:
+         <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.48 0-1.94.92-1.94 1.87v2.25h3.3l-.53 3.49h-2.77V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+         </a>
+         <a href="#" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>
+         </a>
+         <a href="https://www.instagram.com/blanche.zm/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+         </a>
+         <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+         </a>
+        -->
+        <a href="https://wa.me/260951035739" data-contact="whatsapp" class="social-link" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374A9.86 9.86 0 0 1 2.1 11.893c.002-5.45 4.437-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.898 9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.818 9.884zm8.413-18.297A11.815 11.815 0 0 0 11.988 0C5.437 0 .102 5.335.1 11.892a11.87 11.87 0 0 0 1.587 5.945L0 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.423-8.413z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/blanche.zm/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+         </a>
+         <a href="https://www.facebook.com/profile.php?id=100091673793599" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.48 0-1.94.92-1.94 1.87v2.25h3.3l-.53 3.49h-2.77V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+         </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Products</div>
+      <ul class="footer-links">
+        <li><a href="#products"><i data-lucide="chevron-right"></i> Smoked Nkhuku</a></li>
+        <li><a href="#products"><i data-lucide="chevron-right"></i> Live &amp; Dressed Nkhuku</a></li>
+        <li><a href="#products"><i data-lucide="chevron-right"></i> Farm Eggs</a></li>
+        <li><a href="#products"><i data-lucide="chevron-right"></i> Fresh Herbs</a></li>
+        <li><a href="#accessories"><i data-lucide="chevron-right"></i> Farm Accessories</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about"><i data-lucide="chevron-right"></i> Our Story</a></li>
+        <li><a href="#recipes"><i data-lucide="chevron-right"></i> Recipes</a></li>
+        <li><a href="#contact"><i data-lucide="chevron-right"></i> Contact Us</a></li>
+        <li><a href="#contact"><i data-lucide="chevron-right"></i> Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Find Us</div>
+      <ul class="footer-links">
+        <li><a href="#top"><i data-lucide="globe"></i> bellsonfarms.com</a></li>
+        <li><a href="#contact"><i data-lucide="map-pin"></i> Lusaka, Zambia</a></li>
+        <li><a href="tel:+260951035739" data-contact="tel"><i data-lucide="phone"></i> <span data-contact="phone-text">+260 951 035 739</span></a></li>
+        <li><a href="mailto:as30ic@gmail.com" data-contact="mail"><i data-lucide="mail"></i> <span data-contact="mail-text">as30ic@gmail.com</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Bellson Farms. All rights reserved.</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <i data-lucide="map-pin" style="width:13px;height:13px;"></i> Proudly Zambian
+    </span>
+  </div>
+</footer>
+
+<script>
+(function () {
+'use strict';
+
+/* ════════════════════════════════════════════════════════════
+   CONFIGURATION: the ONLY place contact details and dates live.
+   Confirm every value below with the business owner.
+   ════════════════════════════════════════════════════════════ */
+var CONFIG = Object.freeze({
+  FARM_EMAIL:       'as30ic@gmail.com',
+  PHONE_DISPLAY:    '+260 951 035 739',
+  PHONE_E164:       '+260951035739',
+  WHATSAPP_NUMBER:  '260951035739',            // digits only, with country code
+  // Paste a form-service URL (e.g. Formspree) to deliver the contact form to the inbox directly.
+  // Left empty, the form opens a pre-filled email draft and says so honestly.
+  FORM_ENDPOINT:    '',
+  // Batch-ready time with an explicit timezone (Zambia is UTC+2 all year).
+  BATCH_READY:      '2026-10-16T08:00:00+02:00'
+});
+
+/* ════════════════════════════════════════════════════════════
+   PRODUCT CATALOG: the single source of truth for names and prices.
+   The cart stores only product IDs + quantities and looks prices up here.
+   NOTE: this is client-side code, so it cannot stop a determined visitor
+   from tampering. Staff must confirm the final price on every order.
+   ════════════════════════════════════════════════════════════ */
+function item(name, price, unit, icon, extra) {
+  var o = { name: name, price: price, unit: unit, icon: icon };
+  if (extra && extra.deal) o.deal = Object.freeze(extra.deal);
+  return Object.freeze(o);
+}
+var CATALOG = Object.freeze({
+  'smoked-chicken':  item('Smoked Nkhuku, Whole', 180, 'per whole chicken', 'flame'),
+  'chicken-live':    item('Nkhuku, Live',         150, 'per bird',          'bird'),
+  'chicken-dressed': item('Nkhuku, Dressed',      150, 'per bird',          'drumstick'),
+  'eggs-tray':       item('Farm Eggs, Tray',       70, 'per tray',          'egg'),
+  'herb-basil':      item('Basil bundle',    25, 'per bundle', 'leaf'),
+  'herb-thyme':      item('Thyme bundle',    25, 'per bundle', 'leaf'),
+  'herb-oregano':    item('Oregano bundle',  25, 'per bundle', 'leaf'),
+  'herb-chives':     item('Chives bundle',   25, 'per bundle', 'leaf'),
+  'herb-parsley':    item('Parsley bundle',  25, 'per bundle', 'leaf'),
+  'herb-rosemary':   item('Rosemary bundle', 25, 'per bundle', 'leaf'),
+  'herb-sage':       item('Sage bundle',     25, 'per bundle', 'leaf'),
+  'herb-dill':       item('Dill bundle',     25, 'per bundle', 'leaf'),
+  'herb-mint':       item('Mint bundle',     25, 'per bundle', 'leaf'),
+  'tote':            item('Chitenge Tote Bag',  120, 'each', 'shopping-bag'),
+  'magnet':          item('Farm Fridge Magnet',  35, 'each', 'magnet', { deal: { qty: 3, price: 90 } }),
+  'bowl':            item('Wooden Spice Bowl',   95, 'each', 'soup'),
+  'gift':            item('Bellson Gift Set',   210, 'each', 'gift')
+});
+/* ✏️ HERB PRICES: edit the middle number on each herb line above (the 25).
+   ✏️ HERB PHOTOS: put the image file name between the quotes below (same folder as this HTML file),
+      e.g. 'herb-basil': 'basil.jpg'. Leave '' to keep the leaf icon. */
+var HERB_IMAGES = {
+  'herb-basil': 'basil.jpg', 'herb-thyme': 'thyme.jpg', 'herb-oregano': 'oregano.jpg', 'herb-chives': 'chives.jpg', 'herb-parsley': 'parsley.jpg',
+  'herb-rosemary': 'rosemary.jpg', 'herb-sage': 'sage.jpg', 'herb-dill': 'dill.jpg', 'herb-mint': 'mint.jpg'
+};
+var HERB_IDS = ['herb-basil','herb-thyme','herb-oregano','herb-chives','herb-parsley','herb-rosemary','herb-sage','herb-dill','herb-mint'];
+var MAX_QTY = 50;
+
+/* ── helpers ── */
+function $(id) { return document.getElementById(id); }
+function has(id) { return Object.prototype.hasOwnProperty.call(CATALOG, id); }
+function fmt(n) { return 'K' + Number(n).toLocaleString('en-US'); }
+function clean(v, max) { return String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, max); }
+function el(tag, props, kids) {
+  var n = document.createElement(tag);
+  props = props || {};
+  Object.keys(props).forEach(function (k) {
+    if (k === 'text') n.textContent = props[k];
+    else n.setAttribute(k, props[k]);
+  });
+  (kids || []).forEach(function (c) { if (c) n.appendChild(c); });
+  return n;
+}
+function icon(name, size) {
+  var i = el('i', { 'data-lucide': name });
+  if (size) i.style.cssText = 'width:' + size + 'px;height:' + size + 'px;';
+  return i;
+}
+function refreshIcons() {
+  try { if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons(); } catch (e) { /* icons are decoration only */ }
+}
+function safe(label, fn) { try { fn(); } catch (e) { if (window.console) console.error('[Bellson] ' + label + ' failed:', e); } }
+
+/* ── toast ── */
+var toastTimer;
+function showToast(msg) {
+  var t = $('toast'); if (!t) return;
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { t.classList.remove('show'); }, 3500);
+}
+
+/* ════════════ CART STATE ════════════ */
+var cart = new Map();   // id -> qty
+
+function lineTotal(id, qty) {
+  var p = CATALOG[id];
+  if (p.deal) return Math.floor(qty / p.deal.qty) * p.deal.price + (qty % p.deal.qty) * p.price;
+  return qty * p.price;
+}
+function cartTotal() {
+  var t = 0; cart.forEach(function (q, id) { t += lineTotal(id, q); }); return t;
+}
+function cartCount() {
+  var c = 0; cart.forEach(function (q) { c += q; }); return c;
+}
+function addToCart(id) {
+  if (!has(id)) return;
+  var q = (cart.get(id) || 0) + 1;
+  if (q > MAX_QTY) { showToast('Maximum ' + MAX_QTY + ' per item. For bulk orders please contact us.'); return; }
+  cart.set(id, q);
+  renderCart();
+  showToast(CATALOG[id].name + ' added to cart');
+}
+function setQty(id, q) {
+  if (!has(id)) return;
+  if (q <= 0) cart.delete(id); else cart.set(id, Math.min(q, MAX_QTY));
+  renderCart();
+}
+
+function renderCart() {
+  var box = $('cartItems'), totalEl = $('cartTotal');
+  if (!box) return;
+  box.replaceChildren();
+  if (cart.size === 0) {
+    box.appendChild(el('div', { 'class': 'cart-empty' }, [
+      el('div', { 'class': 'cart-empty-icon' }, [icon('shopping-cart')]),
+      el('div', { text: 'Your cart is empty.' }),
+      el('div', { text: 'Add some fresh Zambian produce!' })
+    ]));
+  } else {
+    cart.forEach(function (qty, id) {
+      var p = CATALOG[id];
+      var dec = el('button', { type: 'button', 'data-action': 'qty-dec', 'data-id': id, 'aria-label': 'Decrease quantity of ' + p.name }, [icon('minus')]);
+      var inc = el('button', { type: 'button', 'data-action': 'qty-inc', 'data-id': id, 'aria-label': 'Increase quantity of ' + p.name }, [icon('plus')]);
+      var rm = el('button', { type: 'button', 'class': 'cart-item-remove', 'data-action': 'remove', 'data-id': id, 'aria-label': 'Remove ' + p.name }, [icon('x')]);
+      box.appendChild(el('div', { 'class': 'cart-item' }, [
+        el('div', { 'class': 'cart-item-thumb' }, [icon(p.icon)]),
+        el('div', { 'class': 'cart-item-info' }, [
+          el('div', { 'class': 'cart-item-name', text: p.name }),
+          el('div', { 'class': 'cart-item-price', text: fmt(lineTotal(id, qty)) }),
+          el('div', { 'class': 'qty' }, [dec, el('span', { 'class': 'qty-val', text: String(qty), 'aria-live': 'polite' }), inc])
+        ]),
+        rm
+      ]));
+    });
+  }
+  if (totalEl) totalEl.textContent = fmt(cartTotal());
+  updateBadges();
+  refreshIcons();
+}
+function updateBadges() {
+  var n = cartCount();
+  var b = $('navCartBadge'), m = $('mobileCartBadge');
+  if (b) { b.style.display = n ? 'inline-flex' : 'none'; b.textContent = n; }
+  if (m) { m.style.display = n ? 'inline' : 'none'; m.textContent = ' (' + n + ')'; }
+}
+
+/* ════════════ DIALOGS (cart drawer + checkout modal) ════════════ */
+var lastFocus = null;
+function syncScrollLock() {
+  var open = $('cartDrawer').classList.contains('open') || $('checkoutModal').classList.contains('open') || $('mobileNav').classList.contains('open');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function openCart() {
+  lastFocus = document.activeElement;
+  $('cartDrawer').classList.add('open'); $('cartOverlay').classList.add('open');
+  $('cartDrawer').setAttribute('aria-hidden', 'false');
+  syncScrollLock();
+  var c = $('cartCloseBtn'); if (c) c.focus();
+}
+function closeCart() {
+  $('cartDrawer').classList.remove('open'); $('cartOverlay').classList.remove('open');
+  $('cartDrawer').setAttribute('aria-hidden', 'true');
+  syncScrollLock();
+  if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+}
+function openCheckout() {
+  if (cart.size === 0) { showToast('Your cart is empty.'); return; }
+  var sum = $('modalOrderSummary');
+  sum.replaceChildren();
+  cart.forEach(function (qty, id) {
+    sum.appendChild(el('div', { 'class': 'mos-item' }, [
+      el('span', { 'class': 'mos-item-name', text: CATALOG[id].name + (qty > 1 ? ' × ' + qty : '') }),
+      el('span', { 'class': 'mos-item-price', text: fmt(lineTotal(id, qty)) })
+    ]));
+  });
+  var row = $('modalTotalRow');
+  row.replaceChildren(
+    el('span', { 'class': 'modal-total-label', text: 'Estimated total' }),
+    el('span', { 'class': 'modal-total-val', text: fmt(cartTotal()) })
+  );
+  $('checkoutForm').hidden = false; $('orderSent').hidden = true;
+  $('checkoutOverlay').classList.add('open'); $('checkoutModal').classList.add('open');
+  $('checkoutModal').setAttribute('aria-hidden', 'false');
+  syncScrollLock();
+  var f = $('co-name'); if (f) f.focus();
+}
+function closeCheckout() {
+  $('checkoutOverlay').classList.remove('open'); $('checkoutModal').classList.remove('open');
+  $('checkoutModal').setAttribute('aria-hidden', 'true');
+  syncScrollLock();
+}
+function toggleMenu(forceClose) {
+  var menu = $('mobileNav'), btn = $('hamburger');
+  var open = forceClose === true ? (menu.classList.remove('open'), false) : menu.classList.toggle('open');
+  btn.replaceChildren(icon(open ? 'x' : 'menu'));
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  refreshIcons(); syncScrollLock();
+}
+
+/* ════════════ ORDER REQUEST (email / WhatsApp draft: NOT a placed order) ════════════ */
+var lastOrderText = '';
+function phoneOk(v) { var d = v.replace(/\D/g, ''); return /^[0-9+()\s.\-]+$/.test(v) && d.length >= 7 && d.length <= 15; }
+
+function buildOrderText(c) {
+  var lines = [];
+  cart.forEach(function (qty, id) { lines.push('• ' + CATALOG[id].name + ' × ' + qty + ': ' + fmt(lineTotal(id, qty))); });
+  return [
+    'Hello Bellson Farms,', '',
+    'I would like to request the following order:', '',
+    lines.join('\n'), '',
+    'Estimated total: ' + fmt(cartTotal()) + ' (final price and delivery to be confirmed by Bellson Farms)', '',
+    'Name: ' + c.name,
+    'Phone: ' + c.phone,
+    'Email: ' + c.email,
+    'Delivery area: ' + (c.address || '(not provided)'),
+    'Notes: ' + (c.notes || '(none)'), '',
+    'Please confirm availability, the final total and delivery.', 'Thank you,', c.name
+  ].join('\n');
+}
+
+function startOrder(channel) {
+  var form = $('checkoutForm'), phone = $('co-phone');
+  phone.setCustomValidity(phoneOk(phone.value.trim()) ? '' : 'Enter a valid phone number, e.g. +260 97X XXX XXX');
+  if (!form.reportValidity()) return;
+  if (cart.size === 0) { showToast('Your cart is empty.'); return; }
+  var c = {
+    name: clean($('co-name').value, 80), phone: clean(phone.value, 20), email: clean($('co-email').value, 120),
+    address: clean($('co-address').value, 160), notes: clean($('co-notes').value, 300)
+  };
+  lastOrderText = buildOrderText(c);
+  var how;
+  if (channel === 'whatsapp') {
+    window.open('https://wa.me/' + CONFIG.WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lastOrderText), '_blank', 'noopener');
+    how = 'WhatsApp';
+  } else {
+    window.location.href = 'mailto:' + CONFIG.FARM_EMAIL +
+      '?subject=' + encodeURIComponent('Order request from ' + c.name) + '&body=' + encodeURIComponent(lastOrderText);
+    how = 'your email app';
+  }
+  $('orderSentTitle').textContent = 'Almost done: press Send';
+  $('orderSentText').textContent = 'We have opened a ready-to-send message in ' + how + '. Your order is not placed until you press Send and we confirm it. If nothing opened, copy the text below and send it to ' +
+    CONFIG.FARM_EMAIL + ' or WhatsApp ' + CONFIG.PHONE_DISPLAY + '.';
+  $('orderCopyBox').value = lastOrderText;
+  form.hidden = true; $('orderSent').hidden = false;
+}
+function copyOrder() {
+  var box = $('orderCopyBox');
+  function fallback() { box.focus(); box.select(); showToast('Text selected. Press Ctrl+C (or ⌘+C) to copy.'); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(lastOrderText).then(function () { showToast('Order text copied'); }, fallback);
+  } else fallback();
+}
+function clearOrder() {
+  cart.clear(); renderCart(); closeCheckout(); closeCart();
+  $('checkoutForm').reset();
+  showToast('Cart cleared. Thank you!');
+}
+
+/* ════════════ CONTACT FORM ════════════ */
+function setStatus(msg, kind) { var s = $('contactStatus'); s.textContent = msg; s.className = 'form-status' + (kind ? ' ' + kind : ''); }
+function handleContact(e) {
+  e.preventDefault();
+  var form = e.target;
+  var fd = new FormData(form);
+  if (fd.get('company')) return;                              // honeypot: bots only
+  if (!form.reportValidity()) return;
+  var btn = $('cfSubmit');
+  var d = {
+    first: clean(fd.get('first_name'), 60), last: clean(fd.get('last_name'), 60), email: clean(fd.get('email'), 120),
+    phone: clean(fd.get('phone'), 20), type: clean(fd.get('enquiry_type'), 40), message: String(fd.get('message') || '').slice(0, 1500).trim()
+  };
+  if (CONFIG.FORM_ENDPOINT) {
+    btn.disabled = true; setStatus('Sending…', '');
+    fetch(CONFIG.FORM_ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); setStatus('Thank you. Your message has been sent and we will be in touch soon.', 'ok'); form.reset(); })
+      .catch(function () { setStatus('We could not send your message. Your details are still here. Please try again, or WhatsApp us on ' + CONFIG.PHONE_DISPLAY + '.', 'err'); })
+      .then(function () { btn.disabled = false; });
+  } else {
+    var body = ['Enquiry type: ' + d.type, 'Name: ' + d.first + ' ' + d.last, 'Email: ' + d.email, 'Phone: ' + (d.phone || '(not provided)'), '', d.message].join('\n');
+    window.location.href = 'mailto:' + CONFIG.FARM_EMAIL + '?subject=' + encodeURIComponent('Website enquiry: ' + d.type) + '&body=' + encodeURIComponent(body);
+    setStatus('Your email app should now show a message ready to send. Press Send there to reach us. Nothing has been sent yet. No email app? Message us on WhatsApp: ' + CONFIG.PHONE_DISPLAY + '.', 'ok');
+  }
+}
+
+/* ════════════ COUNTDOWN (display only; never controls availability) ════════════ */
+var batchTimer = null;                                     // declared before any code can read it
+var BATCH_TS = new Date(CONFIG.BATCH_READY).getTime();
+function showBatchReady() {
+  var t = $('batchCountdown'), r = $('cdReady');
+  if (t) t.style.display = 'none';
+  if (r) r.hidden = false;
+  var title = $('cdTitle'); if (title) { title.replaceChildren(document.createTextNode('Fresh '), el('em', { text: 'Nkhuku' }), document.createTextNode(' is ready')); }
+  var sub = $('cdSub'); if (sub) sub.textContent = 'Our latest batch is here. Order live, dressed or smoked Nkhuku below, or message us to reserve yours.';
+  var cta = $('cdCta'); if (cta) { cta.setAttribute('href', '#products'); var sp = cta.querySelector('span'); if (sp) sp.textContent = 'Shop Nkhuku'; }
+  refreshIcons();
+}
+function updateBatchCountdown() {
+  if (isNaN(BATCH_TS)) return;
+  var diff = BATCH_TS - Date.now();
+  if (diff <= 0) {
+    showBatchReady();
+    if (batchTimer !== null) { clearInterval(batchTimer); batchTimer = null; }
+    return;
+  }
+  var p = function (n) { return String(n).padStart(2, '0'); };
+  $('cd-days').textContent  = p(Math.floor(diff / 86400000));
+  $('cd-hours').textContent = p(Math.floor((diff % 86400000) / 3600000));
+  $('cd-mins').textContent  = p(Math.floor((diff % 3600000) / 60000));
+  $('cd-secs').textContent  = p(Math.floor((diff % 60000) / 1000));
+}
+function startCountdown() {
+  updateBatchCountdown();
+  if (!isNaN(BATCH_TS) && BATCH_TS > Date.now()) batchTimer = setInterval(updateBatchCountdown, 1000);
+}
+
+/* ════════════ SHOP RENDERING (from CATALOG, via safe DOM APIs) ════════════ */
+function imgBlock(src, alt, iconName, big) {
+  var wrap = el('div', { 'class': 'product-img' });
+  if (src) {
+    wrap.appendChild(el('img', { src: src, alt: alt, loading: 'lazy' }));
+    wrap.appendChild(el('div', { 'class': 'img-placeholder', style: 'display:none;height:180px;' }, [icon(iconName, 32)]));
+  } else {
+    wrap.appendChild(el('div', { 'class': 'product-tile', 'aria-hidden': 'true' }, [icon(iconName, big || 60)]));
+  }
+  return wrap;
+}
+function productCard(cfg) {
+  var firstId = cfg.ids[0], p = CATALOG[firstId];
+  var card = el('div', { 'class': 'product-card fade-in' });
+  var img = imgBlock(cfg.img, cfg.alt, cfg.icon);
+  img.appendChild(el('div', { 'class': 'product-badge', text: cfg.badge }));
+  var body = el('div', { 'class': 'product-body' });
+  body.appendChild(el('div', { 'class': 'product-name', text: cfg.title }));
+  body.appendChild(el('div', { 'class': 'product-sub', text: cfg.sub }));
+  body.appendChild(el('p', { 'class': 'product-desc', text: cfg.desc }));
+  var addBtn = el('button', { type: 'button', 'class': 'add-btn', 'data-action': 'add', 'data-id': firstId, 'aria-label': 'Add ' + p.name + ' to cart' }, [icon('plus'), document.createTextNode(' Add')]);
+  var priceEl = el('span', { 'class': 'product-price', text: fmt(p.price) });
+  var unitEl = el('span', { 'class': 'product-price-sub', text: p.unit });
+  if (cfg.ids.length > 1) {
+    var tog = el('div', { 'class': 'variant-toggle', role: 'group', 'aria-label': 'Choose live or dressed' });
+    cfg.ids.forEach(function (id, i) {
+      tog.appendChild(el('button', { type: 'button', 'class': 'variant-btn', 'data-action': 'variant', 'data-id': id, 'aria-pressed': String(i === 0), text: cfg.labels[i] }));
+    });
+    body.appendChild(tog);
+  }
+  body.appendChild(el('div', { 'class': 'product-footer' }, [el('div', {}, [priceEl, unitEl]), addBtn]));
+  card.appendChild(img); card.appendChild(body);
+  card._select = function (id) {
+    card.querySelectorAll('.variant-btn').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-id') === id)); });
+    addBtn.setAttribute('data-id', id);
+    addBtn.setAttribute('aria-label', 'Add ' + CATALOG[id].name + ' to cart');
+    priceEl.textContent = fmt(CATALOG[id].price); unitEl.textContent = CATALOG[id].unit;
+  };
+  return card;
+}
+function renderShop() {
+  var grid = $('productsGrid'); if (!grid) return;
+  grid.replaceChildren(
+    productCard({ ids: ['smoked-chicken'], title: 'Smoked Nkhuku', sub: 'Whole chicken · Smoked', desc: 'A whole smoked Nkhuku from our farm.', img: 'Nkhuku smoked.png', alt: 'Smoked whole Nkhuku', icon: 'flame', badge: 'Smoked' }),
+    productCard({ ids: ['chicken-live', 'chicken-dressed'], labels: ['Live', 'Dressed'], title: 'Nkhuku: Live or Dressed', sub: 'Whole chicken · Your choice', desc: 'Pick it live, or have it dressed and ready for the pot. Same price either way.', img: 'Nkuku.png', alt: 'Nkhuku', icon: 'bird', badge: 'Popular' }),
+    productCard({ ids: ['eggs-tray'], title: 'Farm Eggs', sub: 'Sold by the tray', desc: 'Fresh eggs from our hens, sold by the tray.', img: 'eggs2.jpg', alt: '', icon: 'egg', badge: 'Fresh' })
+  );
+  var herbs = $('herbGrid');
+  herbs.replaceChildren();
+  HERB_IDS.forEach(function (id) {
+    var p = CATALOG[id], name = p.name.replace(' bundle', '');
+    var leaf = el('div', { 'class': 'herb-leaf', 'aria-hidden': 'true' });
+    if (HERB_IMAGES[id]) {
+      var im = el('img', { src: HERB_IMAGES[id], alt: '', loading: 'lazy' });
+      im.addEventListener('error', function () { leaf.replaceChildren(icon('leaf')); refreshIcons(); }, { once: true });
+      leaf.appendChild(im); leaf.className += ' has-photo';
+    } else leaf.appendChild(icon('leaf'));
+    herbs.appendChild(el('div', { 'class': 'herb-item' }, [
+      leaf,
+      el('span', { 'class': 'herb-name' }, [document.createTextNode(name), el('small', { 'class': 'herb-price', text: fmt(p.price) + ' per bundle' })]),
+      el('button', { type: 'button', 'class': 'herb-add', 'data-action': 'add', 'data-id': id, 'aria-label': 'Add ' + p.name + ' to cart (' + fmt(p.price) + ')' }, [icon('plus')])
+    ]));
+  });
+  var lowest = Math.min.apply(null, HERB_IDS.map(function (id) { return CATALOG[id].price; }));
+  document.querySelectorAll('[data-price-from="herbs"]').forEach(function (n) { n.textContent = 'From ' + fmt(lowest); });
+  document.querySelectorAll('[data-price]').forEach(function (n) { var id = n.getAttribute('data-price'); if (has(id)) n.textContent = fmt(CATALOG[id].price); });
+}
+
+/* ════════════ CONTACT DETAILS SYNC ════════════ */
+function syncContacts() {
+  document.querySelectorAll('[data-contact]').forEach(function (n) {
+    var k = n.getAttribute('data-contact');
+    if (k === 'tel') n.setAttribute('href', 'tel:' + CONFIG.PHONE_E164);
+    else if (k === 'mail') n.setAttribute('href', 'mailto:' + CONFIG.FARM_EMAIL);
+    else if (k === 'whatsapp') n.setAttribute('href', 'https://wa.me/' + CONFIG.WHATSAPP_NUMBER);
+    else if (k === 'phone-text') n.textContent = CONFIG.PHONE_DISPLAY;
+    else if (k === 'mail-text') n.textContent = CONFIG.FARM_EMAIL;
+  });
+}
+
+/* ════════════ EVENTS (no inline handlers anywhere) ════════════ */
+var actions = {
+  'open-cart': openCart, 'close-cart': closeCart,
+  'open-checkout': openCheckout, 'close-checkout': closeCheckout,
+  'toggle-menu': function () { toggleMenu(); },
+  'close-menu-open-cart': function () { toggleMenu(true); openCart(); },
+  'add': function (n) { addToCart(n.getAttribute('data-id')); },
+  'variant': function (n) { var card = n.closest('.product-card'); if (card && card._select && has(n.getAttribute('data-id'))) card._select(n.getAttribute('data-id')); },
+  'qty-inc': function (n) { var id = n.getAttribute('data-id'); setQty(id, (cart.get(id) || 0) + 1); },
+  'qty-dec': function (n) { var id = n.getAttribute('data-id'); setQty(id, (cart.get(id) || 0) - 1); },
+  'remove': function (n) { setQty(n.getAttribute('data-id'), 0); },
+  'order-whatsapp': function () { startOrder('whatsapp'); },
+  'copy-order': copyOrder, 'clear-order': clearOrder,
+  'back-to-form': function () { $('orderSent').hidden = true; $('checkoutForm').hidden = false; }
+};
+function bindEvents() {
+  document.addEventListener('click', function (e) {
+    var act = e.target.closest('[data-action]');
+    if (act && actions[act.getAttribute('data-action')]) {
+      if (act.tagName === 'A') e.preventDefault();
+      actions[act.getAttribute('data-action')](act, e);
+      return;
+    }
+    // in-page links: only valid element IDs are ever looked up
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = decodeURIComponent((a.getAttribute('href') || '').slice(1));
+    if (!id) { e.preventDefault(); return; }
+    var target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      toggleMenu(true);
+      setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if ($('checkoutModal').classList.contains('open')) closeCheckout();
+    else if ($('cartDrawer').classList.contains('open')) closeCart();
+    else toggleMenu(true);
+  });
+  $('checkoutForm').addEventListener('submit', function (e) { e.preventDefault(); startOrder('email'); });
+  $('co-phone').addEventListener('input', function () { this.setCustomValidity(''); });
+  $('contactForm').addEventListener('submit', handleContact);
+}
+
+/* ════════════ IMAGES + SCROLL REVEAL ════════════ */
+function bindImageFallbacks() {
+  document.querySelectorAll('img').forEach(function (img) {
+    var ph = img.nextElementSibling;
+    if (!ph || !ph.classList.contains('img-placeholder')) return;
+    function fail() { img.style.display = 'none'; ph.style.display = 'flex'; }
+    if (img.complete && img.naturalWidth === 0) fail(); else img.addEventListener('error', fail, { once: true });
+  });
+}
+function bindReveal() {
+  var els = document.querySelectorAll('.fade-in');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (n) { n.classList.add('visible'); }); window.__revealOk = true; return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+  }, { threshold: 0.08 });
+  els.forEach(function (n) { io.observe(n); });
+  window.__revealOk = true;
+}
+
+/* ════════════ INIT: each part is isolated so one failure cannot break the rest ════════════ */
+safe('shop',      renderShop);
+safe('contacts',  syncContacts);
+safe('countdown', startCountdown);
+safe('cart',      renderCart);
+safe('events',    bindEvents);
+safe('images',    bindImageFallbacks);
+safe('reveal',    bindReveal);
+safe('icons',     refreshIcons);
+// Failsafe: if anything above stopped the reveal from running, never leave content hidden.
+setTimeout(function () { if (!window.__revealOk) document.querySelectorAll('.fade-in').forEach(function (n) { n.classList.add('visible'); }); }, 2500);
+})();
+
+</script>
+</body>
+</html>
